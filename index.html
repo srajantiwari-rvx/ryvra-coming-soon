@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#09090b">
   <title>Ryvra — Coming Soon</title>
-  <meta name="description" content="Ryvra is currently under construction. Something new is taking shape.">
+  <meta name="description" content="Ryvra is currently under construction.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,22 +29,25 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 40px 24px;
       -webkit-font-smoothing: antialiased;
       position: relative;
       overflow: hidden;
     }
 
-    /* Soft top glow */
     body::before {
       content: "";
       position: absolute;
       top: -40%;
       left: 50%;
       transform: translateX(-50%);
-      width: 120%;
+      width: 160%;
       height: 70%;
-      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+      background: radial-gradient(
+        ellipse at center,
+        rgba(255, 255, 255, 0.05) 0%,
+        transparent 70%
+      );
       pointer-events: none;
     }
 
@@ -52,55 +55,86 @@
       position: relative;
       z-index: 1;
       text-align: center;
-      max-width: 520px;
+      max-width: 420px;
       width: 100%;
     }
 
     .brand {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.28em;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.42em;
       text-transform: uppercase;
-      color: #a1a1aa;
-      margin-bottom: 64px;
+      color: #fafafa;
+      margin-bottom: 20px;
       opacity: 0;
-      animation: fadeIn 0.9s ease 0.1s forwards;
+      animation: enter 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+    }
+
+    .divider {
+      width: 28px;
+      height: 1px;
+      background: #3f3f46;
+      margin: 0 auto 36px;
+      opacity: 0;
+      animation: enter 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
     }
 
     h1 {
-      font-size: clamp(2.4rem, 6.5vw, 3.4rem);
+      font-size: clamp(1.9rem, 5.2vw, 2.6rem);
       font-weight: 600;
-      line-height: 1.15;
-      letter-spacing: -0.04em;
-      margin-bottom: 20px;
+      line-height: 1.25;
+      letter-spacing: -0.035em;
+      margin-bottom: 16px;
       opacity: 0;
-      animation: fadeIn 0.9s ease 0.25s forwards;
+      animation: enter 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
     }
 
     p {
-      font-size: 1.05rem;
-      line-height: 1.6;
+      font-size: 0.95rem;
+      line-height: 1.7;
       color: #a1a1aa;
       font-weight: 400;
-      max-width: 360px;
-      margin: 0 auto;
+      max-width: 300px;
+      margin: 0 auto 40px;
       opacity: 0;
-      animation: fadeIn 0.9s ease 0.4s forwards;
+      animation: enter 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #71717a;
+      letter-spacing: 0.04em;
+      opacity: 0;
+      animation: enter 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+    }
+
+    .status::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+      animation: pulse 2.2s infinite;
     }
 
     .footer {
-      margin-top: 88px;
-      font-size: 12px;
-      color: #52525b;
-      letter-spacing: 0.01em;
+      margin-top: 64px;
+      font-size: 11px;
+      color: #3f3f46;
+      letter-spacing: 0.03em;
       opacity: 0;
-      animation: fadeIn 0.9s ease 0.55s forwards;
+      animation: enter 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
     }
 
-    @keyframes fadeIn {
+    @keyframes enter {
       from {
         opacity: 0;
-        transform: translateY(16px);
+        transform: translateY(14px);
       }
       to {
         opacity: 1;
@@ -108,12 +142,27 @@
       }
     }
 
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.45);
+      }
+      70% {
+        box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+      }
+    }
+
     @media (max-width: 480px) {
+      body {
+        padding: 32px 20px;
+      }
       .brand {
-        margin-bottom: 48px;
+        letter-spacing: 0.34em;
       }
       .footer {
-        margin-top: 72px;
+        margin-top: 56px;
       }
     }
   </style>
@@ -121,8 +170,10 @@
 <body>
   <div class="container">
     <div class="brand">Ryvra</div>
+    <div class="divider"></div>
     <h1>Something new is taking shape.</h1>
-    <p>We’re building Ryvra.<br>The journey starts here.</p>
+    <p>We’re building Ryvra with intention.<br>The journey starts here.</p>
+    <div class="status">In development</div>
     <div class="footer">© 2026 Ryvra</div>
   </div>
 </body>
